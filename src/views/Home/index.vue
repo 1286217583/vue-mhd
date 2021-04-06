@@ -13,6 +13,7 @@
       </a>
     </header>
     <!-- 首页头部 end -->
+    <br />
 
     <!-- 轮播图 begin -->
       <Swiper class="my-swiper" @change="onChange">
@@ -33,23 +34,6 @@
         </Swiper-item>
       </Swiper>
     <!-- 轮播图 end -->
-    <Swiper class="my-swiper" @change="onChange">
-        <Swiper-item>
-          <img src="../../assets/banner1.jpg" alt="">
-        </Swiper-item>
-        <Swiper-item>
-          <img src="../../assets/banner2.jpg" alt="">
-        </Swiper-item>
-        <Swiper-item>
-          <img src="../../assets/banner3.jpg" alt="">
-        </Swiper-item>
-        <Swiper-item>
-          <img src="../../assets/banner4.jpg" alt="">
-        </Swiper-item>
-        <Swiper-item>
-          <img src="../../assets/banner5.jpg" alt="">
-        </Swiper-item>
-      </Swiper>
   </div>
 </template>
 
@@ -75,18 +59,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// 引入公用的 mixins.scss;
+@import '../../assets/styles/mixins.scss';
+
 .page-home {
   display: flex;
   flex-direction: column;
   height: 100%;
 
   .index-header {
+    @include border-bottom;
     display: flex;
     height: 44px;
     justify-content: space-between;
     align-items: center;
     padding: 0px 20px;
     box-sizing: border-box;
+    // position: relative;
+    // 一px像素边框的处理
+    // border-bottom: 1px solid #dbd9dc;
+    // &::after {
+    //   content: '';
+    //   position: absolute;
+    //   left: 0;
+    //   bottom: 0;
+    //   width: 100%;
+    //   height: 1px;
+    //   background: #e9e9e9;
+    //   transform: scaleY(0.5);
+    // }
+
     .user-btn {
       width: 25px;
       height: 25px;

@@ -1,5 +1,5 @@
 <template>
-  <div class="swiper-container">
+  <div class="swiper-container" ref="swiper">
     <div class="swiper-wrapper">
       <!--
         <div class="swiper-slide">Slide 1</div>
@@ -34,7 +34,7 @@ export default {
   mounted () {
     const _this = this
     /* eslint-disable */
-    new Swiper('.swiper-container', {
+    new Swiper(this.$el, {
       pagination: {
         el: '.swiper-pagination'
       },
