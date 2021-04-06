@@ -3,7 +3,6 @@ module.exports = {
     autoprefixer: {
       // 不需要去设置这个选项，它会自动去使用 .browserslistrc 这个文件的配置
       // browsers: ['Android >= 4.0', 'ios >= 8'],
-      
     },
     'postcss-pxtorem': {
       // 转换的基准值 1rem = 37.5px
@@ -12,4 +11,4 @@ module.exports = {
       propList: ['*']
     }
   }
-};
+}

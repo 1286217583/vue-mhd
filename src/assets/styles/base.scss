@@ -46,5 +46,9 @@ table {
 	border-spacing: 0;
 }
 html, body, #app{
+	// 这里的px单位不希望被转换成 rem
+	// 只需要将 px => PX
+	max-width: 540PX;
 	height: 100%;
+	margin: auto;
 }
