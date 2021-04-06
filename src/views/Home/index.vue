@@ -13,7 +13,6 @@
       </a>
     </header>
     <!-- 首页头部 end -->
-    <br />
 
     <!-- 轮播图 begin -->
       <Swiper class="my-swiper" @change="onChange">
@@ -54,6 +53,14 @@ export default {
     onChange (index) {
       console.log(index)
     }
+  },
+  // https://m.maizuo.com/gateway?cityId=440300&pageNum=1&pageSize=10&type=1&k=65345
+  created () {
+    fetch('http://localhost:8080/migu/m.maizuo.com/gateway?cityId=440300&pageNum=1&pageSize=10&type=1&k=65345', {
+      method: 'GET'
+    }).then(response => response.json()).then(res => {
+      console.log(res)
+    })
   }
 }
 </script>
