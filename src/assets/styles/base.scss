@@ -45,10 +45,23 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+// ==========================================================
+body {
+	font-size: 16px;
+}
 html, body, #app{
 	// 这里的px单位不希望被转换成 rem
 	// 只需要将 px => PX
 	max-width: 540PX;
 	height: 100%;
 	margin: auto;
+}
+a:active,
+a:hover,
+a:link,
+a:visited {
+	outline: none;
+	text-decoration: none;
+	color: #333;
 }

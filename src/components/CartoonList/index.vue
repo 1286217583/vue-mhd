@@ -1,33 +1,19 @@
 <template>
-  <div class="page-ranking">
-    <NormalHeader></NormalHeader>
-
-    <HeaderType></HeaderType>
-    <div class="box">
+  <div class="box">
     <div class="item">
       <img src="../../assets/multipurpose.jpg" alt="">
       <div class="txt">
         <p class="book">达瓦达瓦达瓦达瓦大dd</p>
         <p class="author">作者：dwdawdwadwa达瓦达瓦达瓦</p>
         <p class="fans">人气：达瓦达瓦达瓦达瓦达瓦大屋顶dwadawdwadwadwad</p>
-        <i></i>
       </div>
     </div>
-  </div>
   </div>
 </template>
 
 <script>
-import NormalHeader from '@/components/NormalHeader'
-import HeaderType from '@/components/HeaderType'
-
 export default {
-  name: 'Ranking',
-
-  components: {
-    NormalHeader,
-    HeaderType
-  }
+  name: 'CartoonList'
 }
 </script>
 
@@ -50,7 +36,6 @@ export default {
     .txt {
       max-width: 60%;
       margin-left:10px ;
-      position: relative;
       .book{
         color: #333;
         font-size: 18px;
@@ -62,15 +47,6 @@ export default {
         text-overflow: ellipsis;
         white-space: nowrap;
         line-height: 30px;
-      }
-      i {
-        position: absolute;
-        right: -45px;
-        top: 28px;
-        background: url('../../assets/icon/Ranking-icon1.png') no-repeat;
-        width: 50px;
-        height: 28px;
-        background-size: 100%;
       }
     }
   }
