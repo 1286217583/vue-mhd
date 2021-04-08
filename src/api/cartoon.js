@@ -48,10 +48,7 @@ export const getTyps = () => {
 }
 
 /**
- * 获取分类类型
- * @param {String} suBject 分类ID
- * @param {Number} pageno 当前页码
- * @param {Number} pagesize 每页显示条数
+ * 获取排行榜数据
  */
 export const getTypeList = (suBject, pageno = 1, pagesize = 20) => {
   return request({
@@ -59,6 +56,21 @@ export const getTypeList = (suBject, pageno = 1, pagesize = 20) => {
     method: 'POST',
     data: format({
       suBject,
+      pageno,
+      pagesize
+    })
+  })
+}
+
+/**
+ * 获取分类类型
+ */
+export const getRankList = (raNktype, pageno = 1, pagesize = 20) => {
+  return request({
+    url: '/api/comic_v2/comicsrank?apptype=8&appversion=1.0&channel=web-app',
+    method: 'POST',
+    data: format({
+      raNktype,
       pageno,
       pagesize
     })

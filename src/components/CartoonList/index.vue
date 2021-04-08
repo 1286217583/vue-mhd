@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box" v-if="list.length !== 0">
     <div class="item" v-for="item in list" :key="item.bigbook_id">
       <img :src="item.coverurl" alt="">
       <div class="txt">

@@ -3,17 +3,18 @@
     <NormalHeader title="排行榜"></NormalHeader>
 
     <HeaderType
-      :types="['热搜榜', '人气榜', '畅销榜', '新书榜', '完结榜', '免费榜']"
+      :types="types"
+      @click="onTypeChange"
     ></HeaderType>
 
     <div class="box">
-    <div class="item">
-      <img src="../../assets/multipurpose.jpg" alt="">
-      <div class="txt">
-        <p class="book">达瓦达瓦达瓦达瓦大dd</p>
-        <p class="author">作者：dwdawdwadwa达瓦达瓦达瓦</p>
-        <p class="fans">人气：达瓦达瓦达瓦达瓦达瓦大屋顶dwadawdwadwadwad</p>
-        <i></i>
+      <div class="item" v-for="(item, index) in list" :key="item.bigbookid">
+        <img :src="item.coverurl" alt="">
+        <div class="txt">
+          <p class="book">{{ item.name }}</p>
+          <p class="author">作者：{{ item.author }}</p>
+          <p class="fans">人气：{{ item.weekhits }}</p>
+          <i :class="{icon1: index === 0, icon2: index === 1, icon3: index === 2, icon: index > 2}">{{ index+1 > 3 ? index+1 : ''  }}</i>
       </div>
     </div>
   </div>
@@ -24,12 +25,55 @@
 import NormalHeader from '@/components/NormalHeader'
 import HeaderType from '@/components/HeaderType'
 
+import { getRankList } from '@/api/cartoon'
+import { unformat } from '@/utils/apiHeader'
+
 export default {
   name: 'Ranking',
 
   components: {
     NormalHeader,
     HeaderType
+  },
+
+  data () {
+    return {
+      types: [
+        { id: 1, description: '热搜榜', raNktype: 6 },
+        { id: 2, description: '人气榜', raNktype: 1 },
+        { id: 3, description: '畅销榜', raNktype: 4 },
+        { id: 4, description: '新书榜', raNktype: 2 },
+        { id: 5, description: '完结版', raNktype: 5 },
+        { id: 6, description: '免费榜', raNktype: 3 }
+      ],
+
+      list: []
+    }
+  },
+
+  methods: {
+    getRankList (raNktype) {
+      getRankList(raNktype).then(res => {
+        if (res.code === 200) {
+          const info = JSON.parse(unformat(res.info))
+          this.list = info.raNklist
+        } else {
+          console.log(res.code_msg)
+        }
+      }).catch(err => {
+        console.log(err)
+        alert('网络异常，请稍后再试')
+      })
+    },
+
+    onTypeChange (payload) {
+      const raNktype = payload.type.raNktype
+      this.getRankList(raNktype)
+    }
+  },
+
+  created () {
+    this.getRankList(this.types[0].raNktype)
   }
 }
 </script>
@@ -46,6 +90,7 @@ export default {
     align-items: center;
     padding: 10px;
     box-sizing: border-box;
+    position: relative;
     img {
       width: 80px;
       height: 105px;
@@ -53,7 +98,6 @@ export default {
     .txt {
       max-width: 60%;
       margin-left:10px ;
-      position: relative;
       .book{
         color: #333;
         font-size: 18px;
@@ -68,11 +112,31 @@ export default {
       }
       i {
         position: absolute;
-        right: -45px;
-        top: 28px;
-        background: url('../../assets/icon/Ranking-icon1.png') no-repeat;
+        right: 30px;
+        top: 40px;
         width: 50px;
         height: 28px;
+        text-align: center;
+        font-size: 12px;
+      }
+      .icon1 {
+        background: url('../../assets/icon/Ranking-icon1.png') no-repeat;
+        background-size: 100%;
+      }
+      .icon2 {
+        background: url('../../assets/icon/Ranking-icon2.png') no-repeat;
+        background-size: 100%;
+      }
+      .icon3 {
+        background: url('../../assets/icon/Ranking-icon3.png') no-repeat;
+        background-size: 100%;
+      }
+      .icon {
+        right: 40px;
+        width: 25px;
+        line-height: 28px;
+        color: #80808f;
+        background: url('../../assets/icon/Ranking-icon.png') no-repeat;
         background-size: 100%;
       }
     }
