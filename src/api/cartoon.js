@@ -63,7 +63,7 @@ export const getTypeList = (suBject, pageno = 1, pagesize = 20) => {
 }
 
 /**
- * 获取分类类型
+ * 获取分类数据
  */
 export const getRankList = (raNktype, pageno = 1, pagesize = 20) => {
   return request({
@@ -73,6 +73,21 @@ export const getRankList = (raNktype, pageno = 1, pagesize = 20) => {
       raNktype,
       pageno,
       pagesize
+    })
+  })
+}
+
+/**
+ * 获取VIP专区数据
+ */
+export const getVipList = () => {
+  return request({
+    url: '/api//comic_v2/comicsfilterlist_v2?apptype=8&appversion=1.0&channel=web-app',
+    method: 'POST',
+    data: format({
+      paGeno: 1,
+      pagesize: 15,
+      special: 892
     })
   })
 }

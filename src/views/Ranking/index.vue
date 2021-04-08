@@ -14,7 +14,7 @@
           <p class="book">{{ item.name }}</p>
           <p class="author">作者：{{ item.author }}</p>
           <p class="fans">人气：{{ item.weekhits }}</p>
-          <i :class="{icon1: index === 0, icon2: index === 1, icon3: index === 2, icon: index > 2}">{{ index+1 > 3 ? index+1 : ''  }}</i>
+          <i :class="index | filterIcon">{{ index+1 > 3 ? index+1 : ''  }}</i>
       </div>
     </div>
   </div>
@@ -30,6 +30,15 @@ import { unformat } from '@/utils/apiHeader'
 
 export default {
   name: 'Ranking',
+
+  filters: {
+    filterIcon (value) {
+      if (value === 0) return 'icon1'
+      if (value === 1) return 'icon2'
+      if (value === 2) return 'icon3'
+      if (value > 2) return 'icon'
+    }
+  },
 
   components: {
     NormalHeader,
