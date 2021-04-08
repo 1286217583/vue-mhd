@@ -57,18 +57,15 @@
       </div>
 
       <div
-        :class="`recommend-type${item.comicsviewtype}`"
-        v-for="item in recommend"
-        v-show="item.comicsviewtype === 3"
-        :key="item.bigbook_id"
+        :class="`recommend-type${a.comicsviewtype}`"
       >
         <div class="top-background"></div>
 
         <div class="show">
           <div class="show-top">
             <span>
-              <img :src="item.icon" alt="" />
-              <p>{{ item.name }}</p>
+              <img :src="a.icon" alt="" />
+              <p>{{ a.name }}</p>
               <a href="" class="more">更多 ></a>
             </span>
           </div>
@@ -76,7 +73,7 @@
           <div class="show-bottom">
             <div
               class="box"
-              v-for="(childItem, index) in item.comicslist"
+              v-for="(childItem, index) in a.comicslist"
               :key="childItem.bigbook_id"
             >
               <img :src="childItem.bigcoverurl" alt="" class="hot-img" />
@@ -111,7 +108,9 @@ export default {
       // banner 轮播图数据
       bannerData: [],
       // recommend 首页推荐数据
-      recommend: []
+      recommend: [],
+
+      a: []
     }
   },
 
@@ -153,6 +152,7 @@ export default {
         .then((res) => {
           if (res.code === 200) {
             this.recommend = res.info
+            this.a = res.info[8]
           } else {
             console.log(res.code_msg)
           }

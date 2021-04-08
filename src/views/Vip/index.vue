@@ -1,9 +1,7 @@
 <template>
   <div>
     <!-- 头部 -->
-    <NormalHeader></NormalHeader>
-
-    <HeaderType></HeaderType>
+    <NormalHeader title="Vip专区"></NormalHeader>
 
     <CartoonList></CartoonList>
   </div>
@@ -11,7 +9,6 @@
 
 <script>
 import NormalHeader from '@/components/NormalHeader'
-import HeaderType from '@/components/HeaderType'
 import CartoonList from '@/components/CartoonList'
 
 export default {
@@ -19,7 +16,6 @@ export default {
 
   components: {
     NormalHeader,
-    HeaderType,
     CartoonList
   }
 }

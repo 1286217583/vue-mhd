@@ -1,8 +1,8 @@
 <template>
   <div class="page-classify">
     <header class="head">
-      <i class="backBtn" @click="back"></i>
-      <p >分类</p>
+      <i class="backBtn" @click="goBack"></i>
+      <p >{{ title }}</p>
       <router-link class="serchBtn" to="/search"></router-link>
     </header>
   </div>
@@ -11,8 +11,16 @@
 <script>
 export default {
   name: 'NormalHeader',
-  menthods: {
-    back () {
+
+  props: {
+    title: {
+      type: String,
+      default: '漫画岛'
+    }
+  },
+
+  methods: {
+    goBack () {
       this.$router.back()
     }
   }

@@ -32,7 +32,6 @@ export default {
   },
 
   mounted () {
-    const _this = this
     /* eslint-disable */
     new Swiper(this.$el, {
       pagination: {
@@ -46,13 +45,6 @@ export default {
         stopOnLastSlide: false,
         disableOnInteraction: true,
       } : false,
-
-       on: {
-        slideChangeTransitionEnd: function(){
-          // alert(this.realIndex);//切换结束时，告诉我现在是第几个slide
-          _this.$emit('change', this.realIndex)
-        },
-      },
     })
     /* eslint-enable */
   }

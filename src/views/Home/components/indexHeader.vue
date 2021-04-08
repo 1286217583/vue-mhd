@@ -1,14 +1,14 @@
 <template>
   <header class="index-header">
-    <a href="">
+    <router-link to="/my">
       <div class="header-user">
         <div class="user-btn"></div>
       </div>
-    </a>
+    </router-link>
     <div class="header-logo"></div>
-    <a href="">
+    <router-link to="/search">
       <div class="header-search"></div>
-    </a>
+    </router-link>
   </header>
 </template>
 

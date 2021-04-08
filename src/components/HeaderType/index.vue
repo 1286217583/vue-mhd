@@ -1,17 +1,43 @@
 <template>
   <nav class="nav">
-      <div class="active">热血</div>
-      <div>恋爱</div>
-      <div>搞笑</div>
-      <div>魔幻</div>
-      <div>悬疑</div>
-      <div>少儿</div>
-    </nav>
+    <div
+      :class="{ active: index === activeIndex }"
+      v-for="(item, index) in types"
+      :key="item.id"
+      @click="handleClick(item,index)"
+    >
+      {{ item.description }}
+    </div>
+  </nav>
 </template>
 
 <script>
 export default {
-  name: 'HeaderType'
+  name: 'HeaderType',
+
+  data () {
+    return {
+      activeIndex: 0
+    }
+  },
+
+  props: {
+    types: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
+  },
+
+  methods: {
+    handleClick (type, index) {
+      this.activeIndex = index
+
+      // 通知父组件
+      this.$emit('click', { type, index })
+    }
+  }
 }
 </script>
 

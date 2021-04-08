@@ -1,11 +1,11 @@
 <template>
   <div class="box">
-    <div class="item">
-      <img src="../../assets/multipurpose.jpg" alt="">
+    <div class="item" v-for="item in list" :key="item.bigbook_id">
+      <img :src="item.coverurl" alt="">
       <div class="txt">
-        <p class="book">达瓦达瓦达瓦达瓦大dd</p>
-        <p class="author">作者：dwdawdwadwa达瓦达瓦达瓦</p>
-        <p class="fans">人气：达瓦达瓦达瓦达瓦达瓦大屋顶dwadawdwadwadwad</p>
+        <p class="book">{{ item.bigbook_name }}</p>
+        <p class="author">作者：{{ item.bigbook_author }}</p>
+        <p class="fans">人气：{{ item.bigbookview }}</p>
       </div>
     </div>
   </div>
@@ -13,7 +13,14 @@
 
 <script>
 export default {
-  name: 'CartoonList'
+  name: 'CartoonList',
+
+  props: {
+    list: {
+      tyle: Array,
+      default: []
+    }
+  }
 }
 </script>
 

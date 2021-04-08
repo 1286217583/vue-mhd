@@ -45,7 +45,7 @@ const router = new VueRouter({
 
         {
           path: '',
-          redirect: '/hello/favorite'
+          redirect: '/hello/history'
         }
       ]
     },

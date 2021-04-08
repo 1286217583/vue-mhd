@@ -1,8 +1,11 @@
 <template>
   <div class="page-ranking">
-    <NormalHeader></NormalHeader>
+    <NormalHeader title="排行榜"></NormalHeader>
 
-    <HeaderType></HeaderType>
+    <HeaderType
+      :types="['热搜榜', '人气榜', '畅销榜', '新书榜', '完结榜', '免费榜']"
+    ></HeaderType>
+
     <div class="box">
     <div class="item">
       <img src="../../assets/multipurpose.jpg" alt="">

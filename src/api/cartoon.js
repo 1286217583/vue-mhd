@@ -3,6 +3,8 @@
 // 引入 封装好的 axios
 import request from '../utils/request'
 
+import { format } from '@/utils/apiHeader'
+
 // 一个接口就暴露一个函数
 // 获取轮播图
 export const getBanner = () => {
@@ -32,5 +34,33 @@ export const getIndexRecommend = () => {
       channel: 'web-app',
       viewtype: 1
     }
+  })
+}
+
+/**
+ * 获取分类类型
+ */
+export const getTyps = () => {
+  return request({
+    url: '/api/comic_v2/getproad?apptype=8&appversion=1.0&channel=web-app&adgroupid=125',
+    method: 'GET'
+  })
+}
+
+/**
+ * 获取分类类型
+ * @param {String} suBject 分类ID
+ * @param {Number} pageno 当前页码
+ * @param {Number} pagesize 每页显示条数
+ */
+export const getTypeList = (suBject, pageno = 1, pagesize = 20) => {
+  return request({
+    url: '/api/comic_v2/comicsfilterlist_v2?apptype=8&appversion=1.0&channel=web-app',
+    method: 'POST',
+    data: format({
+      suBject,
+      pageno,
+      pagesize
+    })
   })
 }
