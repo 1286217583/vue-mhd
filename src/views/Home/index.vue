@@ -140,10 +140,6 @@ export default {
             console.log(res.code_msg)
           }
         })
-        .catch((err) => {
-          console.log(err)
-          alert('网络异常，请稍后重试')
-        })
     },
 
     // 首页推荐数据请求
@@ -156,10 +152,6 @@ export default {
           } else {
             console.log(res.code_msg)
           }
-        })
-        .catch((err) => {
-          console.log(err)
-          alert('网络异常，请稍后重试')
         })
     }
   },

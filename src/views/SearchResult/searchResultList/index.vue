@@ -1,11 +1,11 @@
 <template>
   <div class="box">
-    <div class="item" v-for="item in list" :key="item.bigbook_id">
+    <div class="item" v-for="item in searchResultList" :key="item.bookstore_id">
       <img :src="item.coverurl" alt="">
       <div class="txt">
-        <p class="book">{{ item.bigbook_name }}</p>
-        <p class="author">作者：{{ item.bigbook_author }}</p>
-        <p class="fans">人气：{{ item.bigbookview }}</p>
+        <p class="book">{{ item.name }}</p>
+        <p class="author">作者：{{ item.author }}</p>
+        <p class="fans">更新：{{ item.lastpartname }}</p>
       </div>
     </div>
   </div>
@@ -13,10 +13,10 @@
 
 <script>
 export default {
-  name: 'CartoonList',
+  name: 'searchResultList',
 
   props: {
-    list: {
+    searchResultList: {
       tyle: Array,
       default: []
     }

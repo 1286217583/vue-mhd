@@ -82,12 +82,42 @@ export const getRankList = (raNktype, pageno = 1, pagesize = 20) => {
  */
 export const getVipList = () => {
   return request({
-    url: '/api//comic_v2/comicsfilterlist_v2?apptype=8&appversion=1.0&channel=web-app',
+    url: '/api/comic_v2/comicsfilterlist_v2?apptype=8&appversion=1.0&channel=web-app',
     method: 'POST',
     data: format({
       paGeno: 1,
       pagesize: 15,
       special: 892
     })
+  })
+}
+
+/**
+ * 获取热门搜索数据
+ */
+export const getHotSearch = () => {
+  return request({
+    url: '/api/comic/hotsearch?apptype=8&appversion=1.0&channel=web-app&appType=8',
+    method: 'GET'
+  })
+}
+
+/**
+ * 获取搜索关键字数据
+ */
+export const searchIndex = (keyword) => {
+  return request({
+    url: `/api/comic_v2/searchindex?apptype=8&appversion=1.0&channel=web-app&name=${keyword}&type=2`,
+    method: 'GET'
+  })
+}
+
+/**
+ * 获取搜索结果数据
+ */
+export const searchResult = (keyword) => {
+  return request({
+    url: `/api/comic_v2/searchbookauthor?apptype=8&appversion=1.0&channel=web-app&name=${keyword}&type=2&pageno=1&pagesize=100`,
+    method: 'GET'
   })
 }

@@ -24,6 +24,8 @@ instance.interceptors.response.use((response) => {
   return response.data
 }, (error) => {
   // 对响应错误做点什么
+  console.log(error)
+  alert('网络异常，请稍后重试')
   return Promise.reject(error)
 })
 
