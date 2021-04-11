@@ -5,9 +5,10 @@ import store from './store'
 
 // 引入 基础样式
 import './assets/styles/base.scss'
+// import Notify from './components/notify/create'
 
 Vue.config.productionTip = false
-
+// Vue.use(Notify)
 new Vue({
   router,
   store,

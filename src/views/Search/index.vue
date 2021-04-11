@@ -239,6 +239,7 @@ export default {
       border: 0;
       outline: none;
       float: left;
+      font-size: 14px;
     }
   }
   .searchBtn {

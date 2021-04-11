@@ -1,6 +1,8 @@
 // 引入 axios
 import axios from 'axios'
 
+import { Notify } from 'vant'
+
 // 创建 一个 axios 实列对象
 const instance = axios.create({
   // 基准路径
@@ -25,7 +27,7 @@ instance.interceptors.response.use((response) => {
 }, (error) => {
   // 对响应错误做点什么
   console.log(error)
-  alert('网络异常，请稍后重试')
+  Notify('网络异常，请稍后重试')
   return Promise.reject(error)
 })
 

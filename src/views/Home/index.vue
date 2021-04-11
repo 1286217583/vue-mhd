@@ -1,5 +1,7 @@
+
 <template>
   <div class="page-home">
+
     <!-- 首页头部 begin -->
     <IndexHeader></IndexHeader>
     <!-- 首页头部 end -->
@@ -98,7 +100,7 @@
 import { Swiper, SwiperItem } from '../../components/Swiper'
 import IndexNav from './components/indexNav'
 import IndexHeader from './components/indexHeader'
-import { getBanner, getIndexRecommend } from '../../api/cartoon'
+import { getBanner, getIndexRecommend } from '@/api/cartoon'
 
 export default {
   name: 'Home',
@@ -127,7 +129,13 @@ export default {
     },
 
     jsonParse (value) {
-      return JSON.parse(value)
+      let val = {}
+      try {
+        val = JSON.parse(value)
+      } catch (error) {
+        val = {}
+      }
+      return val
     },
 
     // 轮播图请求
@@ -148,7 +156,7 @@ export default {
         .then((res) => {
           if (res.code === 200) {
             this.recommend = res.info
-            this.a = res.info[8]
+            this.a = res.info[this.recommend.length - 1]
           } else {
             console.log(res.code_msg)
           }
@@ -162,6 +170,10 @@ export default {
 
     // 首页推荐数据请求
     this.getIndexRecommend()
+
+    // console.log(this)
+    // console.log(notify({ visible: true }))
+    // console.log(this)
   }
 }
 </script>
