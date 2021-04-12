@@ -1,15 +1,21 @@
 <template>
-  <div>
-    <!-- 头部 -->
-    <NormalHeader title="分类"></NormalHeader>
+  <transition
+    appear
+    enter-active-class="animated slideInRight"
+    leave-active-class="animated slideOutLeft"
+  >
+    <div class="page-classify">
+      <!-- 头部 -->
+      <NormalHeader title="分类"></NormalHeader>
 
-    <HeaderType
-      :types="types"
-      @click="onTypeChange"
-    ></HeaderType>
+      <HeaderType
+        :types="types"
+        @click="onTypeChange"
+      ></HeaderType>
 
-    <CartoonList :list="list"></CartoonList>
-  </div>
+      <CartoonList :list="list"></CartoonList>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -74,5 +80,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 </style>

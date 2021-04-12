@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box1 {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+    .box2 {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+    
+    
+    .a-enter, .a-leave-to {
+      opacity: 0;
+    }
+
+    .a-enter-active, .a-leave-active {
+      transition: all 2s;
+    }
+
+    .b-enter, .b-leave-active {
+      height: 0;
+    }
+
+    .b-enter-active, .b-leave-active {
+      transition: all 2s;
+    }
+
+  </style>
+</head>
+<body>
+  
+  <div id="app">
+
+    <button @click="isShow = !isShow">显示隐藏</button>
+
+    <div style="display: flex; justify-content: space-around;">
+      <transition name="a">
+        <div class="box1" v-show="isShow"></div>
+      </transition>
+
+      <transition name="b">
+        <div class="box2" v-show="isShow"></div>
+      </transition>
+    </div>
+
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+  <script>
+    new Vue({
+      el: '#app',
+
+      data: {
+        isShow: true
+      }
+    })
+
+  </script>
+  
+</body>
+</html>

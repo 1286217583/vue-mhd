@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.1/animate.min.css">
+  <style>
+    ul {
+      position: absolute;
+    }
+    p {
+      position: absolute;
+      z-index: 9999;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body style="height: 100%;">
+  <div id="app" style="height: 100%;">
+    <button @click="fruits = []">清空</button>
+
+    <transition 
+      enter-active-class="animated slideInRight"      
+      leave-active-class="animated slideOutLeft"
+      mode="out-in"
+    >
+
+      <ul v-if="fruits.length > 0">
+        <li v-for="item in fruits">{{ item }}</li>
+      </ul>
+  
+      <p v-else>暂无数据</p>
+
+    </transition>
+
+
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+  <script>
+    new Vue({
+      el: '#app',
+
+      data: {
+        fruits: ['Apple', 'Banana', 'Orange']
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>

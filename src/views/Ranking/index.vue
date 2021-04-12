@@ -1,24 +1,30 @@
 <template>
-  <div class="page-ranking">
-    <NormalHeader title="排行榜"></NormalHeader>
+  <transition
+    appear
+    enter-active-class="animated slideInDown"
+    leave-active-class="animated slideOutUp"
+  >
+    <div class="page-ranking">
+      <NormalHeader title="排行榜"></NormalHeader>
 
-    <HeaderType
-      :types="types"
-      @click="onTypeChange"
-    ></HeaderType>
+      <HeaderType
+        :types="types"
+        @click="onTypeChange"
+      ></HeaderType>
 
-    <div class="box">
-      <div class="item" v-for="(item, index) in list" :key="item.bigbookid">
-        <img :src="item.coverurl" alt="">
-        <div class="txt">
-          <p class="book">{{ item.name }}</p>
-          <p class="author">作者：{{ item.author }}</p>
-          <p class="fans">人气：{{ item.weekhits }}</p>
-          <i :class="index | filterIcon">{{ index+1 > 3 ? index+1 : ''  }}</i>
+      <div class="box">
+        <div class="item" v-for="(item, index) in list" :key="item.bigbookid">
+          <img :src="item.coverurl" alt="">
+          <div class="txt">
+            <p class="book">{{ item.name }}</p>
+            <p class="author">作者：{{ item.author }}</p>
+            <p class="fans">人气：{{ item.weekhits }}</p>
+            <i :class="index | filterIcon">{{ index+1 > 3 ? index+1 : ''  }}</i>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  </div>
+  </transition>
 </template>
 
 <script>
