@@ -36,7 +36,7 @@
         <div class="show">
           <div class="show-top">
             <span>
-              <img :src="item.icon" alt="" />
+              <img v-lazy="item.icon" alt="" />
               <p>{{ item.name }}</p>
               <a href="" class="more">更多 ></a>
             </span>
@@ -48,7 +48,7 @@
               v-for="childItem in item.comicslist"
               :key="childItem.bigbook_id"
             >
-              <img :src="jsonParse(childItem.extension).xsyzfx" alt="" />
+              <img v-lazy="jsonParse(childItem.extension).xsyzfx" alt="" />
               <p class="title">{{ childItem.bigbook_name }}</p>
               <p class="brief">
                 {{ childItem.key_name }}
@@ -78,7 +78,7 @@
               v-for="(childItem, index) in a.comicslist"
               :key="childItem.bigbook_id"
             >
-              <img :src="childItem.bigcoverurl" alt="" class="hot-img" />
+              <img v-lazy="childItem.bigcoverurl" alt="" class="hot-img" />
               <div class="hot-right">
                 <div class="icon" :class="`item-ranking-${index + 1}`"></div>
                 <div class="txt">
