@@ -1,5 +1,6 @@
 <template>
   <div class="page-classify">
+    <router-link to="/city" class="city">当前的城市是：{{ curCityName }}</router-link>
     <header class="head">
       <i class="backBtn" @click="goBack"></i>
       <p :class="{move: !showSearch}" ref="move" :style="s">{{ title }}</p>
@@ -9,6 +10,8 @@
 </template>
 
 <script>
+
+import { mapGetters } from 'vuex'
 export default {
   name: 'NormalHeader',
 
@@ -16,6 +19,10 @@ export default {
     return {
       s: ''
     }
+  },
+
+  computed: {
+    ...mapGetters('city', ['curCityName'])
   },
 
   props: {
@@ -51,6 +58,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.city {
+    display: block;
+    height: 20px;
+    font-size: 20px;
+    line-height: 20px;
+  }
 .head {
   width: 100%;
   height: 45px;

@@ -13,13 +13,22 @@ module.exports = {
           '^/api': ''
         }
       },
-      '/migu': {
+
+      '/maizuo': {
         target: 'https://m.maizuo.com',
         changeOrigin: true,
         pathRewrite: {
-          '^/migu': ''
+          '^/maizuo': ''
         }
       }
+
+      // '/migu': {
+      //   target: 'https://m.maizuo.com',
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     '^/migu': ''
+      //   }
+      // }
     }
   }
 }

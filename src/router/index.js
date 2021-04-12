@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '../store'
 
 // 路由组件
 import Home from '../views/Home'
@@ -14,6 +15,7 @@ import Register from '../views/Register'
 import Search from '../views/Search'
 import SearchResult from '../views/SearchResult'
 import Vip from '../views/Vip'
+import City from '../views/city'
 
 Vue.use(VueRouter)
 
@@ -27,6 +29,11 @@ const router = new VueRouter({
     {
       path: '/classify',
       component: Classify
+    },
+
+    {
+      path: '/city',
+      component: City
     },
 
     {
@@ -90,6 +97,19 @@ const router = new VueRouter({
       redirect: '/home'
     }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  if (!store.state.city.curCity && to.path !== '/city') {
+    next({
+      path: '/city',
+      query: {
+        redirect: to.fullPath
+      }
+    })
+  } else {
+    next()
+  }
 })
 
 export default router
