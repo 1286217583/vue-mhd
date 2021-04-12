@@ -3,27 +3,28 @@
     <NormalHeader :title="`当前城市是-${curCityName}`" :showSearch="false"></NormalHeader>
 
     <div class="cityList" ref="scrollLeft">
+      <div>
+        <section
+          class="box"
+          v-for="item in cityList"
+          :key="item.py"
+          :ref="`section-${item.py}`"
+        >
+          <div class="top">
+            {{ item.py }}
+          </div>
 
-      <section
-        class="box"
-        v-for="item in cityList"
-        :key="item.py"
-        :ref="`section-${item.py}`"
-      >
-        <div class="top">
-          {{ item.py }}
-        </div>
-
-        <div class="bottom" v-for="city in item.list" :key="city.cityId">
-          <p @click="handleClick(city)">{{ city.name }}</p>
-        </div>
-      </section>
+          <div class="bottom" v-for="city in item.list" :key="city.cityId">
+            <p @click="handleClick(city)">{{ city.name }}</p>
+          </div>
+        </section>
+      </div>
     </div>
 
     <section class="letter">
-      <div>
-        <p v-for="item in indexs" :key="item" @click="handleIndex(item)">{{ item }}</p>
-      </div>
+        <div>
+          <p v-for="item in indexs" :key="item" @click="handleIndex(item)">{{ item }}</p>
+        </div>
     </section>
   </div>
 </template>
@@ -31,8 +32,12 @@
 <script>
 import NormalHeader from '@/components/NormalHeader'
 import getCityList from '@/api/city'
-
 import { mapMutations, mapGetters } from 'vuex'
+
+// import BScroll from '@better-scroll/core'
+// import MouseWheel from '@better-scroll/mouse-wheel'
+
+// BScroll.use(MouseWheel)
 
 export default {
   name: 'city',
@@ -162,6 +167,14 @@ export default {
 
   created () {
     this.getCityList()
+  },
+
+  mounted () {
+    /* eslint-disable */
+    // new BScroll(this.$refs.scrollLeft, {
+    //   mouseWheel: true
+    // })
+    /* eslint=enable */
   }
 }
 </script>
@@ -171,8 +184,9 @@ export default {
   display: flex;
   flex-direction: column;
   .cityList {
-    height: calc(100vh - 45px);
-    overflow-y: scroll;
+    height: calc(100vh - 65px);
+    // overflow: hidden;
+    overflow-y: auto;
     position: relative;
     .box {
       width: 100%;
@@ -213,7 +227,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    padding: 70px 0px;
+    padding: 100px 0px;
     box-sizing: border-box;
     div {
       height: 100%;
